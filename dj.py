@@ -40,6 +40,7 @@ def dj_oracle(case, n):
     
     oracle_gate = oracle_qc.to_gate()
     oracle_gate.name = "Oracle" 
+
     return oracle_gate
 
 def dj_algorithm(oracle, n):
@@ -64,13 +65,18 @@ def dj_algorithm(oracle, n):
 
 
 
-n=8
+n=input("n")
+n=int(n)
 
 
 oracle_gate = dj_oracle('balanced', n)
 dj_circuit = dj_algorithm(oracle_gate, n)
 dj_circuit.draw()
 job = execute(dj_circuit, simulator, shots=1000)
+
+
+
+
 
 
 result = job.result()
